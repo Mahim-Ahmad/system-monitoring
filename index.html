@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8" />
+<title>System Resource Monitor</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.4/chart.umd.min.js"></script>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #14141f;
+    color: #fff;
+    padding: 20px;
+  }
+  h2 {
+    text-align: center;
+    margin-bottom: 4px;
+  }
+  #osInfo {
+    text-align: center;
+    color: #9a9ab0;
+    font-size: 13px;
+    margin-bottom: 20px;
+  }
+  .card {
+    background: #1e1e2f;
+    border-radius: 14px;
+    padding: 16px;
+    margin-bottom: 16px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+  }
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  .card-header h3 { margin: 0; font-size: 16px; }
+  .card-header span { font-size: 18px; font-weight: bold; }
+  .bar-bg {
+    width: 100%;
+    height: 14px;
+    background: #2b2b3d;
+    border-radius: 7px;
+    overflow: hidden;
+  }
+  .bar-fill {
+    height: 100%;
+    border-radius: 7px;
+    transition: width 0.4s ease;
+  }
+  .cpu-fill { background: #ff9f0a; }
+  .mem-fill { background: #34c759; }
+  .disk-fill { background: #0a84ff; }
+  .sub-text {
+    font-size: 12px;
+    color: #9a9ab0;
+    margin-top: 6px;
+  }
+  canvas { margin-top: 12px; }
+</style>
+</head>
+<body>
+  <h2>🖥️ System Resource Monitor</h2>
+  <div id="osInfo">Loading OS info...</div>
+
+  <div class="card">
+    <div class="card-header">
+      <h3>CPU Usage</h3>
+      <span id="cpuPercent">0%</span>
+    </div>
+    <div class="bar-bg"><div class="bar-fill cpu-fill" id="cpuBar" style="width:0%"></div></div>
+    <div class="sub-text" id="cpuTemp">Temp: N/A</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h3>Memory (RAM)</h3>
+      <span id="memPercent">0%</span>
+    </div>
+    <div class="bar-bg"><div class="bar-fill mem-fill" id="memBar" style="width:0%"></div></div>
+    <div class="sub-text" id="memText">0 GB / 0 GB</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h3>Disk Usage</h3>
+      <span id="diskPercent">0%</span>
+    </div>
+    <div class="bar-bg"><div class="bar-fill disk-fill" id="diskBar" style="width:0%"></div></div>
+    <div class="sub-text" id="diskText">0 GB / 0 GB</div>
+  </div>
+
+  <div class="card">
+    <h3>CPU Usage (Live Graph)</h3>
+    <canvas id="cpuChart" height="140"></canvas>
+  </div>
+
+  <script src="renderer.js"></script>
+</body>
+</html>

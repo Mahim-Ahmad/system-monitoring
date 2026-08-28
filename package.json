@@ -1,0 +1,15 @@
+{
+  "name": "system-resource-monitor",
+  "version": "1.0.0",
+  "description": "Real-time System Resource Monitor built with Electron.js (CPU, RAM, Disk usage)",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "devDependencies": {
+    "electron": "^31.0.0"
+  },
+  "dependencies": {
+    "systeminformation": "^5.22.11"
+  }
+}
